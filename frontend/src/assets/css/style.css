@@ -692,10 +692,6 @@ video {
   left: 0px;
 }
 
-.-left-\[500px\] {
-  left: -500px;
-}
-
 .-left-\[300px\] {
   left: -300px;
 }
@@ -714,16 +710,16 @@ video {
   margin-bottom: 0.5rem;
 }
 
-.mr-2 {
-  margin-right: 0.5rem;
-}
-
 .mt-2 {
   margin-top: 0.5rem;
 }
 
 .mt-5 {
   margin-top: 1.25rem;
+}
+
+.mr-2 {
+  margin-right: 0.5rem;
 }
 
 .mt-4 {
@@ -870,6 +866,12 @@ video {
 
 .overflow-hidden {
   overflow: hidden;
+}
+
+.truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .rounded {

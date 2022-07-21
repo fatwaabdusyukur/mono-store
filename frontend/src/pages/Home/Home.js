@@ -18,10 +18,6 @@ const Home = () => {
         />
         <div className="flex flex-col items-center md:grid gap-5 md:grid-cols-2 lg:grid-cols-3">
           <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
         </div>
       </div>
     </div>
