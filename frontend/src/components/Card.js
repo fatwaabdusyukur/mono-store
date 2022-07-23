@@ -3,7 +3,7 @@ import React from "react";
 export default class Card extends React.Component {
   render() {
     return (
-      <div className="max-w-full md:max-w-[17rem] lg:max-w-[19rem] rounded overflow-hidden bg-transparent">
+      <div className="max-w-full md:max-w-[17rem] lg:max-w-[19rem] rounded overflow-hidden bg-transparent hover:shadow-lg hover:shadow-gray-500/40">
         <a className="cursor-pointer">
           <img
             className="w-full"
@@ -11,10 +11,12 @@ export default class Card extends React.Component {
             alt="Sunset in the mountains"
           />
           <div className="px-6 py-4">
-            <div className="font-bold text-xl mb-2 truncate">
-              Eiger Rhinos 60L
+            <div className="font-bold text-xl mb-2 truncate ">
+              {this.props.item.title}
             </div>
-            <p className="text-gray-700 text-base font-bold">$24.9</p>
+            <p className="text-gray-700 text-base font-bold dark:bg-gray-700 rounded-full w-32">
+              ${this.props.item.price}
+            </p>
           </div>
         </a>
       </div>

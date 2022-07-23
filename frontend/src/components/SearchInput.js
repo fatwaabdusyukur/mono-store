@@ -1,6 +1,6 @@
 const SearchInput = () => {
   return (
-    <form className="flex items-center w-full md:w-[70%] lg:w-[50%]">
+    <form className="self-start flex items-center w-full md:w-[70%] lg:w-[50%]">
       <label for="simple-search" className="sr-only">
         Search
       </label>
