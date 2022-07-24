@@ -1,10 +1,16 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 export default class Card extends React.Component {
   render() {
+    let name = this.props.item.title.toLowerCase().replace(/ /g, "-");
     return (
       <div className="max-w-full md:max-w-[17rem] lg:max-w-[19rem] rounded overflow-hidden bg-transparent hover:shadow-lg hover:shadow-gray-500/40">
-        <a className="cursor-pointer">
+        <Link
+          to={`/product/${name}`}
+          state={{ id: this.props.item._id }}
+          className="cursor-pointer"
+        >
           <img
             className="w-full"
             src="https://lzd-img-global.slatic.net/g/p/a44cec48e9da8debbde1ac51f44315e9.png_720x720q80.jpg_.webp"
@@ -18,7 +24,7 @@ export default class Card extends React.Component {
               ${this.props.item.price}
             </p>
           </div>
-        </a>
+        </Link>
       </div>
     );
   }

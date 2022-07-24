@@ -4,7 +4,7 @@
 
 html,
 body {
-  width: fit-content;
+  @apply w-fit sm:w-full;
 }
 
 @layer components {
@@ -29,11 +29,11 @@ body {
   }
 
   .nav-mobile {
-    @apply fixed top-0 min-h-screen bg-gray-50/80 shadow-lg duration-200 ease-in-out shadow-black/30 w-72 p-3;
+    @apply fixed top-0 min-h-screen bg-gray-300/70 shadow-lg duration-200 ease-in-out shadow-black/30 w-72 p-3;
   }
 
   .wrapper {
-    @apply w-fit flex flex-col sm:flex-row justify-between items-center my-4 px-5;
+    @apply flex flex-col sm:flex-row justify-between items-center my-4 px-5;
   }
 
   .side-content {
