@@ -733,6 +733,10 @@ button {
   left: -300px;
 }
 
+.bottom-3 {
+  bottom: 0.75rem;
+}
+
 .my-1 {
   margin-top: 0.25rem;
   margin-bottom: 0.25rem;
@@ -777,6 +781,10 @@ button {
 
 .ml-2 {
   margin-left: 0.5rem;
+}
+
+.mb-4 {
+  margin-bottom: 1rem;
 }
 
 .mb-3 {
@@ -847,6 +855,14 @@ button {
   height: 2.25rem;
 }
 
+.h-screen {
+  height: 100vh;
+}
+
+.h-\[30rem\] {
+  height: 30rem;
+}
+
 .h-\[200px\] {
   height: 200px;
 }
@@ -903,12 +919,16 @@ button {
   max-width: 100%;
 }
 
-.basis-\[35\%\] {
-  flex-basis: 35%;
+.basis-\[40\%\] {
+  flex-basis: 40%;
 }
 
 .basis-\[60\%\] {
   flex-basis: 60%;
+}
+
+.basis-\[35\%\] {
+  flex-basis: 35%;
 }
 
 .rotate-180 {
@@ -938,6 +958,11 @@ button {
 
 .cursor-pointer {
   cursor: pointer;
+}
+
+.appearance-none {
+  -webkit-appearance: none;
+          appearance: none;
 }
 
 .flex-row {
@@ -1014,6 +1039,10 @@ button {
 
 .rounded-lg {
   border-radius: 0.5rem;
+}
+
+.rounded-sm {
+  border-radius: 0.125rem;
 }
 
 .rounded-l-lg {
@@ -1094,6 +1123,10 @@ button {
 
 .bg-black\/70 {
   background-color: rgb(0 0 0 / 0.7);
+}
+
+.bg-gray-100\/70 {
+  background-color: rgb(243 244 246 / 0.7);
 }
 
 .bg-green-400 {
@@ -1313,6 +1346,11 @@ button {
   color: rgb(239 68 68 / var(--tw-text-opacity));
 }
 
+.text-green-400 {
+  --tw-text-opacity: 1;
+  color: rgb(74 222 128 / var(--tw-text-opacity));
+}
+
 .text-gray-600 {
   --tw-text-opacity: 1;
   color: rgb(75 85 99 / var(--tw-text-opacity));
@@ -1392,6 +1430,11 @@ button {
   background-color: rgb(31 41 55 / var(--tw-bg-opacity));
 }
 
+.hover\:bg-green-800:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(22 101 52 / var(--tw-bg-opacity));
+}
+
 .hover\:fill-white:hover {
   fill: #fff;
 }
@@ -1416,6 +1459,11 @@ button {
   color: rgb(29 78 216 / var(--tw-text-opacity));
 }
 
+.hover\:text-green-800:hover {
+  --tw-text-opacity: 1;
+  color: rgb(22 101 52 / var(--tw-text-opacity));
+}
+
 .focus\:border-blue-500:focus {
   --tw-border-opacity: 1;
   border-color: rgb(59 130 246 / var(--tw-border-opacity));
@@ -1426,9 +1474,18 @@ button {
   border-color: rgb(107 114 128 / var(--tw-border-opacity));
 }
 
+.focus\:border-green-300:focus {
+  --tw-border-opacity: 1;
+  border-color: rgb(134 239 172 / var(--tw-border-opacity));
+}
+
 .focus\:outline-none:focus {
   outline: 2px solid transparent;
   outline-offset: 2px;
+}
+
+.focus\:outline:focus {
+  outline-style: solid;
 }
 
 .focus\:ring-4:focus {
@@ -1562,6 +1619,10 @@ button {
 @media (min-width: 640px) {
   .sm\:block {
     display: block;
+  }
+
+  .sm\:flex {
+    display: flex;
   }
 
   .sm\:hidden {

@@ -55,7 +55,10 @@ const Header = () => {
                 </svg>
               </span>
             </div>
-            <a href="#" className="inline-flex items-center cursor-pointer">
+            <Link
+              to="/auth/login"
+              className="inline-flex items-center cursor-pointer"
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-5 w-5 mr-2"
@@ -69,7 +72,7 @@ const Header = () => {
                 />
               </svg>
               Login
-            </a>
+            </Link>
           </div>
         </div>
         <div className="navbar-foot">
