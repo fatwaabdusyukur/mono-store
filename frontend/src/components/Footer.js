@@ -9,14 +9,14 @@ const Footer = () => {
             About Us
           </h1>
           <div className="pl-3 pr-1">
-            <span className="relative inline-flex items-center w-full text-sm font-medium cursor-pointer text-white hover:text-gray-400">
-              Lorem Ipsum Dolor antri saya ana antum.
+            <span className="relative inline-flex items-center w-full text-md font-medium cursor-pointer text-white hover:text-gray-400">
+              Address: Bandung, West Java Indonesia
             </span>
-            <span className="relative inline-flex items-center w-full text-sm font-medium cursor-pointer text-white hover:text-gray-400">
-              Lorem Ipsum Dolor antri saya ana antum.
+            <span className="relative inline-flex items-center w-full text-md font-medium cursor-pointer text-white hover:text-gray-400">
+              Phone: +6285721702170
             </span>
-            <span className="relative inline-flex items-center w-full text-sm font-medium cursor-pointer text-white hover:text-gray-400">
-              Lorem Ipsum Dolor antri saya ana antum.
+            <span className="relative inline-flex items-center w-full text-md font-medium cursor-pointer text-white hover:text-gray-400">
+              Email: monostore@email.com
             </span>
           </div>
         </div>
@@ -25,10 +25,10 @@ const Footer = () => {
             Categories
           </h1>
           <ul className="pl-3 pr-1">
-            <li className="font-medium text-sm text-white">Shoes</li>
-            <li className="font-medium text-sm text-white">Shirt</li>
-            <li className="font-medium text-sm text-white">Jeans</li>
-            <li className="font-medium text-sm text-white">Flanel</li>
+            <li className="font-medium text-md text-white">Backpack</li>
+            <li className="font-medium text-md text-white">Shirt</li>
+            <li className="font-medium text-md text-white">Pant</li>
+            <li className="font-medium text-md text-white">Shoes</li>
           </ul>
         </div>
         <div className="w-full sm:basis-[40%] pl-3 sm:pt-2">
