@@ -3,6 +3,11 @@ module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
     extend: {},
+    fontFamily: {
+      kanit: ["kanit"],
+      signika: ["signika"],
+      monserat: ["monserat"],
+    },
   },
   plugins: [],
 };

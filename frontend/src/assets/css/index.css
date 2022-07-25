@@ -2,9 +2,30 @@
 @tailwind components;
 @tailwind utilities;
 
-html,
-body {
-  @apply w-fit sm:w-full;
+@font-face {
+  font-family: "kanit";
+  src: url(../fonts/kanit.ttf) format("truetype");
+}
+
+@font-face {
+  font-family: "signika";
+  src: url(../fonts/signika.ttf) format("truetype");
+}
+
+@font-face {
+  font-family: "monserat";
+  src: url(../fonts/monserat.ttf) format("truetype");
+}
+
+@layer base {
+  html,
+  body {
+    @apply w-fit sm:w-full;
+  }
+
+  button {
+    @apply outline-none;
+  }
 }
 
 @layer components {
@@ -29,7 +50,7 @@ body {
   }
 
   .nav-mobile {
-    @apply fixed top-0 min-h-screen bg-gray-300/70 shadow-lg duration-200 ease-in-out shadow-black/30 w-72 p-3;
+    @apply fixed z-10 top-0 min-h-[1000vh] bg-gray-300/70 shadow-lg duration-200 ease-in-out shadow-black/30 w-72 p-3;
   }
 
   .wrapper {
