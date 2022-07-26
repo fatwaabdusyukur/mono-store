@@ -8,19 +8,18 @@ export default class Login extends React.Component {
     super();
     this.state = {
       errors: {},
-      email: "",
-      pwd: "",
     };
   }
 
   handleSubmit(event) {
     event.preventDefault();
-    this.setState({
-      errors: login({
-        email: this.state.email,
-        pwd: this.state.pwd,
-      }),
-    });
+    const form = event.target;
+    login({
+      email: form[0].value,
+      pwd: form[1].value,
+    })
+      .then((res) => this.setState({ errors: res }))
+      .catch((err) => console.log(err));
   }
 
   render() {
@@ -45,8 +44,8 @@ export default class Login extends React.Component {
                       : ""
                   } focus:outline focus:border-green-300`}
                   name="email"
+                  type="text"
                   placeholder="Email?"
-                  onChange={(e) => this.setState({ email: e.target.value })}
                 />
                 <input
                   className={`appearance-none bg-gray-50 focus:bg-white border w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none ${
@@ -55,8 +54,8 @@ export default class Login extends React.Component {
                       : ""
                   } focus:outline focus:border-green-300`}
                   name="pwd"
+                  type="password"
                   placeholder="Password?"
-                  onChange={(e) => this.setState({ pwd: e.target.value })}
                 />
               </div>
               <div className="inline-flex items-center w-full">

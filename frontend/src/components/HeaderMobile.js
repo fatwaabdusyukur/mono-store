@@ -1,4 +1,5 @@
 import React from "react";
+import logo from "../assets/img/monostore-logo.png";
 
 export default class HeaderMobile extends React.Component {
   render() {
@@ -7,7 +8,7 @@ export default class HeaderMobile extends React.Component {
         className={`${this.props.show ? "left-0" : "-left-[300px]"} nav-mobile`}
       >
         <div className="inline-flex justify-between items-center w-full">
-          <h1 className="font-mono font-bold text-2xl">Mono-store</h1>
+          <img className="w-[8rem] h-[4rem]" src={logo} alt="logo" />
           <button
             type="button"
             onClick={() => this.props.onHandleShow(!this.props.show)}

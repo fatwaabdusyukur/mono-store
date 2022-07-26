@@ -2,34 +2,54 @@ import React from "react";
 import regisImg from "../../assets/img/sign-up.jpg";
 import { Link } from "react-router-dom";
 import { regis } from "./Action";
+import { NotificationManager } from "react-notifications";
 
 export default class Register extends React.Component {
   constructor() {
     super();
     this.state = {
       errors: {},
-      email: "",
-      name: "",
-      pwd1: "",
-      pwd2: "",
     };
   }
 
   handleSubmit(event) {
     event.preventDefault();
-    this.setState({
-      errors: regis({
-        email: this.state.email,
-        name: this.state.name,
-        password1: this.state.pwd1,
-        password2: this.state.pwd2,
-      }),
-    });
+    const form = event.target;
+    regis({
+      email: form[0].value,
+      name: form[1].value,
+      password: form[2].value,
+      password2: form[3].value,
+    })
+      .then((res) => {
+        if (typeof res === "object") this.setState({ errors: res });
+        else {
+          if (res) {
+            NotificationManager.success(
+              "Registration Success!",
+              "Success",
+              2000,
+              true
+            );
+            for (const input of form) {
+              input.value = "";
+            }
+          } else {
+            NotificationManager.error(
+              "Email already has been taken!",
+              "Failed",
+              2000,
+              true
+            );
+          }
+        }
+      })
+      .catch((err) => console.log(err));
   }
 
   render() {
     return (
-      <div className="w-full h-screen flex items-center justify-center bg-gray-100/70">
+      <div className="relative w-full h-screen flex items-center justify-center bg-gray-100/70">
         <div className="w-[80%] h-[30rem] rounded-sm bg-white flex flex-col sm:flex-row">
           <div className="basis-[40%] hidden sm:flex items-center justify-center">
             <img src={regisImg} alt="..." />
@@ -51,7 +71,7 @@ export default class Register extends React.Component {
                       : ""
                   } focus:outline focus:border-green-300`}
                   name="email"
-                  onChange={(e) => this.setState({ email: e.target.value })}
+                  type="text"
                   placeholder="Email..."
                 />
                 <p class="pl-1 basis-1/2 text-red-500 text-xs italic">
@@ -66,7 +86,7 @@ export default class Register extends React.Component {
                       : ""
                   } focus:outline focus:border-green-300`}
                   name="name"
-                  onChange={(e) => this.setState({ name: e.target.value })}
+                  type="text"
                   placeholder="Name..."
                 />
                 <p class="pl-1 basis-1/2 text-red-500 text-xs italic">
@@ -76,12 +96,12 @@ export default class Register extends React.Component {
               <div className="inline-flex items-center w-full">
                 <input
                   className={`appearance-none bg-gray-50 focus:bg-white border w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none ${
-                    this.state.errors?.password1?.fail
+                    this.state.errors?.password?.fail
                       ? "border-red-300 text-red-300 bg-red-50/90"
                       : ""
                   } focus:outline focus:border-green-300`}
                   name="pwd1"
-                  onChange={(e) => this.setState({ pwd1: e.target.value })}
+                  type="password"
                   placeholder="Password..."
                 />
                 <input
@@ -91,13 +111,13 @@ export default class Register extends React.Component {
                       : ""
                   } focus:outline focus:border-green-300`}
                   name="pwd2"
-                  onChange={(e) => this.setState({ pwd2: e.target.value })}
+                  type="password"
                   placeholder="Confirm password..."
                 />
               </div>
               <div className="inline-flex items-center w-full">
                 <p class="pl-1 basis-1/2 text-red-500 text-xs italic">
-                  {this.state.errors?.password1?.msg}
+                  {this.state.errors?.password?.msg}
                 </p>
                 <p class="pl-1 basis-1/2 text-red-500 text-xs italic">
                   {this.state.errors?.password2?.msg}
