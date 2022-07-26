@@ -6,4 +6,8 @@ module.exports = {
   database: {
     url: "mongodb://localhost:27017/db_monostore",
   },
+  jsonWebToken: {
+    key: "secret",
+    lifeTime: "3d",
+  },
 };

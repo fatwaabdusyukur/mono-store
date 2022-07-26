@@ -2,6 +2,7 @@ import React from "react";
 import loginImg from "../../assets/img/sign-in.jpg";
 import { Link } from "react-router-dom";
 import { login } from "./Action";
+import { NotificationManager } from "react-notifications";
 
 export default class Login extends React.Component {
   constructor() {
@@ -16,9 +17,19 @@ export default class Login extends React.Component {
     const form = event.target;
     login({
       email: form[0].value,
-      pwd: form[1].value,
+      password: form[1].value,
     })
-      .then((res) => this.setState({ errors: res }))
+      .then((res) => {
+        if (!res.status) {
+          this.setState({ errors: res.data });
+        } else {
+          if (typeof res.data === "object") {
+            console.log(res.data);
+          } else {
+            NotificationManager.error(res.data, "Failed", 2000, true);
+          }
+        }
+      })
       .catch((err) => console.log(err));
   }
 

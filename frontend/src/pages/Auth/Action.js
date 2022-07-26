@@ -7,17 +7,24 @@ export const login = (data) => {
     const val = new validator(data, loginRules, loginErrorMsg);
     if (val.fails()) {
       resolve({
-        email: {
-          msg: val.errors.first("email"),
-          fail: typeof val.errors.first("email") === "string" ? true : false,
-        },
-        password: {
-          msg: val.errors.first("pwd"),
-          fail: typeof val.errors.first("pwd") === "string" ? true : false,
+        status: false,
+        data: {
+          email: {
+            msg: val.errors.first("email"),
+            fail: typeof val.errors.first("email") === "string" ? true : false,
+          },
+          password: {
+            msg: val.errors.first("password"),
+            fail:
+              typeof val.errors.first("password") === "string" ? true : false,
+          },
         },
       });
     } else {
-      rejected("Success");
+      axios
+        .post("http://localhost:5000/auth/login", data)
+        .then((res) => resolve({ status: true, data: res.data }))
+        .catch((err) => rejected(err));
     }
   });
 };

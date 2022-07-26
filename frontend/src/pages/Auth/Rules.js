@@ -1,11 +1,11 @@
 export const loginRules = {
   email: "required|email",
-  pwd: "required",
+  password: "required",
 };
 
 export const loginErrorMsg = {
   "required.email": "Email is requried!",
-  "required.pwd": "Password is requried!",
+  "required.password": "Password is requried!",
   email: "Email must an valid email!",
 };
 

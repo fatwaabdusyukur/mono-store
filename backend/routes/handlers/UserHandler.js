@@ -1,5 +1,8 @@
 const userModel = require("../../models/UserModel");
 const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken");
+
+const { jsonWebToken } = require("../../config/environment");
 
 const saveUser = async (req, res) => {
   const data = req.body;
@@ -26,4 +29,39 @@ const saveUser = async (req, res) => {
   }
 };
 
-module.exports = { saveUser };
+const getUserByEmail = async (req, res) => {
+  const data = req.body;
+
+  const user = await userModel.findOne({ email: data.email });
+
+  try {
+    if (user) {
+      if (bcrypt.compareSync(data.password, user.password)) {
+        const payload = {
+          id: user._id,
+        };
+
+        jwt.sign(
+          payload,
+          jsonWebToken.key,
+          { expiresIn: jsonWebToken.lifeTime },
+          (err, token) => {
+            if (err) res.send(`Error: ${err}`);
+            res.json({
+              success: true,
+              token: `Bearer ${token}`,
+            });
+          }
+        );
+      } else {
+        res.send("Wrong password!");
+      }
+    } else {
+      res.send("Account not registered!");
+    }
+  } catch (error) {
+    res.send(`Error: ${error}`);
+  }
+};
+
+module.exports = { saveUser, getUserByEmail };
