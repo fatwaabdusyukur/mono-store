@@ -1,3 +1,5 @@
+require("dotenv").config();
+
 module.exports = {
   apk: {
     name: "Monostore",
@@ -7,7 +9,7 @@ module.exports = {
     url: "mongodb://localhost:27017/db_monostore",
   },
   jsonWebToken: {
-    key: "secret",
+    key: process.env.JWT_SECRET,
     lifeTime: "3d",
   },
 };

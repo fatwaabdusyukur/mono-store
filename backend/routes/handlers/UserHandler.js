@@ -38,7 +38,9 @@ const getUserByEmail = async (req, res) => {
     if (user) {
       if (bcrypt.compareSync(data.password, user.password)) {
         const payload = {
-          id: user._id,
+          user: {
+            id: user._id,
+          },
         };
 
         jwt.sign(
@@ -48,8 +50,8 @@ const getUserByEmail = async (req, res) => {
           (err, token) => {
             if (err) res.send(`Error: ${err}`);
             res.json({
-              success: true,
-              token: `Bearer ${token}`,
+              isLogged: true,
+              token: token,
             });
           }
         );
@@ -64,4 +66,31 @@ const getUserByEmail = async (req, res) => {
   }
 };
 
-module.exports = { saveUser, getUserByEmail };
+function verifyToken(req, res, next) {
+  const token = req.get("x-auth-token");
+
+  if (!token) return res.send(`Incorect token!`);
+
+  try {
+    jwt.verify(token, jsonWebToken.key, (err, decode) => {
+      if (err) return res.send("Failed Authenticate!");
+      else {
+        req.user = decode.user;
+        next();
+      }
+    });
+  } catch (error) {
+    res.send(`Error : ${error}`);
+  }
+}
+
+const getUser = async (req, res) => {
+  try {
+    const user = await userModel.findById(req.user.id);
+    res.json(user);
+  } catch (err) {
+    res.send(`Error: ${err}`);
+  }
+};
+
+module.exports = { saveUser, getUserByEmail, getUser, verifyToken };
