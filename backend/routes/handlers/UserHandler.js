@@ -11,7 +11,7 @@ const saveUser = async (req, res) => {
     const takenEmail = await userModel.findOne({ email: data.email });
 
     if (takenEmail) {
-      res.send(false);
+      res.json({ success: false, msg: "Email Already Registered!" });
     } else {
       const salt = bcrypt.genSaltSync(10);
       data.password = bcrypt.hashSync(req.body.password, salt);
@@ -22,7 +22,7 @@ const saveUser = async (req, res) => {
         image: "default.jpg",
         role: 2,
       }).save();
-      res.json(true);
+      res.json({ success: true, msg: "Registered Success!" });
     }
   } catch (error) {
     res.send(`Error: ${error}`);
@@ -50,16 +50,16 @@ const getUserByEmail = async (req, res) => {
           (err, token) => {
             if (err) res.send(`Error: ${err}`);
             res.json({
-              isLogged: true,
+              success: true,
               token: token,
             });
           }
         );
       } else {
-        res.send("Wrong password!");
+        res.json({ success: false, msg: "Wrong password!" });
       }
     } else {
-      res.send("Account not registered!");
+      res.json({ success: false, msg: "Account not registered!" });
     }
   } catch (error) {
     res.send(`Error: ${error}`);

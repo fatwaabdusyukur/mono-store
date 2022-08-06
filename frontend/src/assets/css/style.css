@@ -787,6 +787,10 @@ button {
   margin-left: 0.5rem;
 }
 
+.mr-3 {
+  margin-right: 0.75rem;
+}
+
 .mb-4 {
   margin-bottom: 1rem;
 }
@@ -871,6 +875,10 @@ button {
   height: 30rem;
 }
 
+.h-4 {
+  height: 1rem;
+}
+
 .h-\[200px\] {
   height: 200px;
 }
@@ -921,6 +929,10 @@ button {
 
 .w-24 {
   width: 6rem;
+}
+
+.w-4 {
+  width: 1rem;
 }
 
 .w-10 {
@@ -1170,6 +1182,10 @@ button {
 
 .fill-black {
   fill: #000;
+}
+
+.fill-white {
+  fill: #fff;
 }
 
 .fill-blue-600 {

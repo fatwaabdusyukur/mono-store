@@ -1,23 +1,21 @@
-import axios from "axios";
-import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import React, { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import Rating from "../../components/Rating";
 import QuantityInput from "../../components/QuantityInput";
+import { setQuantity, showProduct } from "../../store/reducers/productReducer";
 
 const Detail = () => {
-  const [data, setData] = useState({});
-  const [qty, setQty] = useState(0);
+  const data = useSelector((state) => state.product);
+  const dispatch = useDispatch();
   const loc = useLocation();
 
   useEffect(() => {
-    axios
-      .get(`http://localhost:5000/product/${loc.state.id}`)
-      .then((res) => setData(res.data))
-      .catch((err) => console.log(err));
+    dispatch(showProduct(loc.state.id));
   });
 
   const handleQuantity = (qty) => {
-    setQty(qty);
+    dispatch(setQuantity(qty));
   };
 
   return (
@@ -30,11 +28,16 @@ const Detail = () => {
         />
       </div>
       <div className="main-content md:mt-3 lg:mt-0 self-start basis-[60%] w-full block">
-        <h1 className="text-3xl mb-3 font-kanit">{data.title}</h1>
-        <Rating rate={data.rating?.rate} reviewer={data.rating?.count} />
-        <h3 class="text-4xl font-medium mt-6 font-signika">${data.price}</h3>
+        <h1 className="text-3xl mb-3 font-kanit">{data?.response.title}</h1>
+        <Rating
+          rate={data?.response.rating?.rate}
+          reviewer={data?.response.rating?.count}
+        />
+        <h3 class="text-4xl font-medium mt-6 font-signika">
+          ${data?.response.price}
+        </h3>
         <p class="ml-2 text-sm font-medium w-[80%] text-gray-600 dark:text-gray-500 mt-3 font-monserat">
-          {data.description}
+          {data?.response.description}
         </p>
         <div className="inline-flex items-center mt-5 pb-7 border-b border-gray-300/90 w-full">
           <QuantityInput onHandleQuantity={handleQuantity} />
@@ -68,7 +71,9 @@ const Detail = () => {
           <li>
             <span className="inline-flex items-center">
               <strong>Category</strong>
-              <p className="indent-8 text-gray-400">{data.category}</p>
+              <p className="indent-8 text-gray-400">
+                {data?.response.category}
+              </p>
             </span>
           </li>
           <li>

@@ -7,7 +7,7 @@ const Header = () => {
   const [show, setShow] = useState(false);
 
   const handleShow = (state) => {
-    setShow(false);
+    setShow(state);
   };
 
   return (
